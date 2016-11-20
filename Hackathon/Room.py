@@ -11,9 +11,7 @@ class Room(object):
         self.adjacentRooms = roomList
         self.name = name
         self.description = description
-        self.menu = Menu([Option("Inpect {}".format(self.name), None),
-                          Option("Leave {}".format(self.name), None)],
-                          "You are in the {}.  What will you do?".format(self.name))
+        self.menu = Menu([], "dummy menu")
         
     def listAdjacentRooms(self):
         print("The nearby rooms are: ")
@@ -29,6 +27,9 @@ class Room(object):
     
     def addItem(self,item):
         self.item.append(str(item))
+        
+    def display(self):
+        self.menu.display()
 
 
     
