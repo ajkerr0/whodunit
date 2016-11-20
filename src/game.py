@@ -11,15 +11,15 @@ import sys
 
 from story import Story
 from menu import Option, Menu
-import dylan
+import build
 
-TITLE = "Jerky McJerk Game"
-HOST = "Muh ***REMOVED***"
+TITLE = "WHODUNIT"
+HOST = "Morty"
 FRIEND1 = "Rick Sanchez"
 GLMV = "Jerry Smith"
 
-ROOMS = dylan.buildRooms()
-PERSONS = dylan.buildPeople()
+ROOMS = build.buildRooms()
+PERSONS = build.buildPeople()
 
 story = Story(HOST, FRIEND1, GLMV)
 
