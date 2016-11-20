@@ -14,21 +14,17 @@ from menu import Option, Menu
 import build
 
 TITLE = "WHODUNIT"
-HOST = "Morty"
-FRIEND1 = "Rick Sanchez"
-GLMV = "Jerry Smith"
-
 ROOMS = build.buildRooms()
 PERSONS = build.buildPeople()
 
-story = Story(HOST, FRIEND1, GLMV)
+story = Story(PERSONS)
 
 def main():
     """Main program execution."""
     
     story.prologue()
     
-    main_menu = Menu([Option("Start", start), Option("Quit", exit_program)], "Jerky McJerk Game")
+    main_menu = Menu([Option("Start", start), Option("Quit", exit_program)], TITLE)
     
     main_menu.display()
     
