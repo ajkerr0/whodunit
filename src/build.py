@@ -2,109 +2,151 @@
 
 """
 
-import Room
-import Person
 from menu import Option, Menu
+
+class Room(object):
+    des = "You are unsure what this room is."
+    def __init__(self,itemList=[],roomList=[],name="unknown",description=des):
+        self.items = itemList
+        self.adjacentRooms = roomList
+        self.name = name
+        self.description = description
+        self.menu = Menu([], "dummy menu")
+        
+    def listAdjacentRooms(self):
+        print("The nearby rooms are: ")
+        print(" ")
+        for i in range(0,len(self.adjacentRooms)):
+            print(self.adjacentRooms[i])
+    
+    def listItems(self):
+        print("After surveying the room you notice a few items out of place: ")
+        print(" ")
+        for i in range(0,len(self.items)):
+            print(self.items[i])
+    
+    def addItem(self,item):
+        self.item.append(str(item))
+        
+    def display(self):
+        self.menu.display()
+        
+class Person(object):
+    
+    def __init__(self,
+            height=172.2,
+            weight=712,
+            name="Name",
+            watch=False,
+            glasses=False,
+            testimony="Empty"):
+        
+        self.height = height
+        self.weight = weight
+        self.name = name
+        self.watch = watch
+        self.glasses = glasses
+        self.testimony = testimony
 
 def buildRooms():
 
-    MainEntrance = Room.Room(["Bat","Picture"],
+    MainEntrance = Room(["Bat","Picture"],
         [2,6,10,12],
         "Main Entrance",
         "This is the main entrance of the building. In front of you is a grand staircase. There is a door to your left, one to the right, and also a door under the stairs.")
-    GrandeLounge = Room.Room([],
+    GrandeLounge = Room([],
          [1,3],
          "Grande Lounge",
          "This is a large social area complete with a wet bar.")
-    DiningRoom = Room.Room([],
+    DiningRoom = Room([],
          [2,6],
          "Dining Room",
          "This is a large dining room complete with a long dinner table set with food.")
-    Storage = Room.Room([],
+    Storage = Room([],
          [5],
          "Storage",
          "Storage pantry with plenty of food.")
-    ServantsQuarters = Room.Room([],
+    ServantsQuarters = Room([],
          [4,6],
          "Servant's Quarters",
          "A small cot and a few magazines are surrounded by dirty clothes" )
-    Kitchen = Room.Room([],
+    Kitchen = Room([],
          [3,5,7,1],
          "Kitchen",
          " Large kitchen complete with an island and all appliances.")
-    Freezer = Room.Room([],
+    Freezer = Room([],
          [6],
          "Freezer",
          "Walk in freezer. Relatively empty")
-    BallRoom = Room.Room([],
+    BallRoom = Room([],
          [6,9],
          "Ball Room",
          "Large ball room that has been decorated for some event. There is a stage in the corner, and an open ceiling that looks up to a balcony.")
-    Restroom = Room.Room([],
+    Restroom = Room([],
          [8,10],
          "Restroom",
          "Large fancy restroom with marble floors and a couch. Contains two entrances.")
-    SideRoom = Room.Room([],
+    SideRoom = Room([],
          [1,9,11],
          "Side Room",
          "Large room that has recently been used for storage. There appears to be another small closet in the corner.")
-    Nook = Room.Room([],
+    Nook = Room([],
          [10],
          "Nook",
          "A small closet which contains a large table with physics experiments on top")
-    LargeHallway = Room.Room([],
+    LargeHallway = Room([],
          [13,14,15,16,17,18],
          "Large Hallway",
          "A large hallway at the top of the stairs")
-    BallRoomOverLook = Room.Room([],
+    BallRoomOverLook = Room([],
          [12,23],
          "Ball Room OverLook",
          "An open balcony the looks down on the ballroom")
-    GuestBath1 = Room.Room([],
+    GuestBath1 = Room([],
          [12],
          "Guest Bath 1",
          "Small bathroom with a sink and tub")
-    GuestBath2 = Room.Room([],
+    GuestBath2 = Room([],
          [12],
          "Guest Bath 2",
          "Small bathroom with a sink and tub")
-    GuestRoom1 = Room.Room([],
+    GuestRoom1 = Room([],
          [18],
          "Guest Room 1",
          "Guest bedroom one of 4 identical")
-    GuestRoom2 = Room.Room([],
+    GuestRoom2 = Room([],
          [18],
          "Guest Room 2",
          "Guest bedroom one of 4 identical")
-    GuestRoom3 = Room.Room([],
+    GuestRoom3 = Room([],
          [18],
          "Guest Room 3",
          "Guest bedroom one of 4 identical")
-    GuestRoom4 = Room.Room([],
+    GuestRoom4 = Room([],
          [18],
          "Guest Room 4",
          "Guest bedroom one of 4 identical")
-    MasterBath = Room.Room([],
+    MasterBath = Room([],
          [17],
          "Master Bath",
          "Master Bathroom. Two sinks and a shower with water that falls from the ceiling")
-    MasterBedRoom = Room.Room([],
+    MasterBedRoom = Room([],
          [12,16,24],
          "Master BedRoom",
          "Master bedroom. King size bed. There appears to be a double door that opens to a balcony")
-    Hallway = Room.Room([],
+    Hallway = Room([],
          [12,19,20,21,22],
          "Hallway",
          "Narrow hallway")
-    Library = Room.Room([],
+    Library = Room([],
          [13],
          "Library",
          "A very interesting library. There are four rows of books, mostly math and science.")
-    MasterBalcony = Room.Room(["Dagger" ],
+    MasterBalcony = Room(["Dagger" ],
          [17],
          "Master Balcony",
          "A small balcony that overlooks a fountain in the garden")
-    Building = Room.Room(description=" A large mansion that holds many secrets")
+    Building = Room(description=" A large mansion that holds many secrets")
 
     roomList = [Building,MainEntrance,GrandeLounge,DiningRoom,Storage,ServantsQuarters,Kitchen,Freezer,BallRoom,
                 Restroom,SideRoom,Nook,LargeHallway,BallRoomOverLook,GuestBath1,GuestBath2,MasterBath,
@@ -123,31 +165,31 @@ def buildRooms():
     return roomList
 
 def buildPeople():
-    AlbertEinstein = Person.Person(height=172.2,
+    AlbertEinstein = Person(height=172.2,
             weight=712,
             name="Albert Einstein",
             watch=True,
             glasses=False,
             testimony="Drinking heavily. Off putting and angry about being stuck with here.  In slurring words tells you to leave them alone")
-    MarieCurie = Person.Person(160,
+    MarieCurie = Person(160,
             600,
             "Marie Curie",
             False,
             False,
             testimony="Saw the silhouette of a person in the doorway of the dining room but lightning blinded him then the person was gone")
-    NielsBohr = Person.Person(182,
+    NielsBohr = Person(182,
             900,
             "Niels Bohr",
             True,
             False,
             testimony="Standing near the right side of the entrance to the dining room. Heard a snap from his right hand side near the book shelf")
-    IsaacNewton = Person.Person(158,
+    IsaacNewton = Person(158,
             650,
             "Isaac Newton",
             False,
             False,
             testimony="Breathing heavily. Seems nervous or frightened. Heard a scream in the entrance area.")
-    StephenHawking = Person.Person(110,
+    StephenHawking = Person(110,
             300,
             "Stephen Hawking",
             True,
