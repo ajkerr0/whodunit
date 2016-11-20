@@ -33,7 +33,7 @@ class Story:
         However, the Physics Social is one of the largest events of the year and the host {0} regularly brags about the safety of the residence.\n \
         Upon entering you shed your rain soaked coat and are quickly greeted by {1} and Werner Heisenberg.  \
         They offer you a drink and you move into the Grand Lounge with your two comrades. \
-        The ***REMOVED***hts festivities begin but you have a feeling to***REMOVED***ht's Physics Social will be very different from any other...".format(self.name[0], self.name[1]))
+        The ***REMOVED***hts festivities begin but you have a feeling to***REMOVED***ht's Physics Social will be very different from any other...".format(self.name(0), self.name(1)))
         
     def start(self):
         print("You have drunk {0} drinks and are swaying to the soft music playing in the background.  \
@@ -50,5 +50,5 @@ class Story:
         and that the small bridge has collapsed due to the raging waters caused by the downpour. \n \
         Slowly the eerie truth that they are stuck in the mansion at least until morning starts to sink into the minds of the party goers including yourself. \
         After finishing the rest of your drink, you decide that you will use the knowledge you have obtained so far in \
-        your physics career to solve this murder so that no one else comes to harm.\n".format(random.randint(1,10), self.name[2], self.name[0], self.name[0])) 
+        your physics career to solve this murder so that no one else comes to harm.\n".format(random.randint(1,10), self.name(2), self.name(0), self.name(0))) 
     
