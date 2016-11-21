@@ -3,6 +3,9 @@
 
 """
 import random
+import sys
+
+from build import Menu, Option
 
 class Story:
     """The story structure of the game.
@@ -22,6 +25,18 @@ class Story:
     def __init__(self, rooms, persons, items):
         random.shuffle(persons)
         self.persons = persons
+        #assign roles
+        self.host = self.persons[0]
+        self.friend1 = self.persons[1]
+        self.glmv = self.persons[2]  # grand lounge murder victim
+        self.killer_index = 3
+        self.killer = self.persons[self.killer_index]
+        #assign rooms
+        self.rooms = rooms
+        self.kitchen = self.rooms[6]
+        self.main_entrance = self.rooms[1]
+        self.kitchen.event_func = self.kitchen_scene
+        self.kitchen.event = True
         
     def name(self, index):
         return self.persons[index].name
@@ -33,7 +48,8 @@ class Story:
         However, the Physics Social is one of the largest events of the year and the host {0} regularly brags about the safety of the residence.\n \
         Upon entering you shed your rain soaked coat and are quickly greeted by {1} and Werner Heisenberg.  \
         They offer you a drink and you move into the Grand Lounge with your two comrades. \
-        The ***REMOVED***hts festivities begin but you have a feeling to***REMOVED***ht's Physics Social will be very different from any other...".format(self.name(0), self.name(1)))
+        The ***REMOVED***hts festivities begin but you have a feeling to***REMOVED***ht's Physics Social will be very different from any other..."\
+        .format(self.host.name, self.friend1.name))
         
     def start(self):
         print("You have drunk {0} drinks and are swaying to the soft music playing in the background.  \
@@ -50,5 +66,29 @@ class Story:
         and that the small bridge has collapsed due to the raging waters caused by the downpour. \n \
         Slowly the eerie truth that they are stuck in the mansion at least until morning starts to sink into the minds of the party goers including yourself. \
         After finishing the rest of your drink, you decide that you will use the knowledge you have obtained so far in \
-        your physics career to solve this murder so that no one else comes to harm.\n".format(random.randint(1,10), self.name(2), self.name(0), self.name(0))) 
+        your physics career to solve this murder so that no one else comes to harm.\n"\
+        .format(random.randint(1,10), self.glmv.name, self.host.name, self.host.name))
+        
+    def kitchen_scene(self):
+        print("As you walk into the kitchen you notice a bullet hole on the western wall!  \
+        You deduce that the perpetrator must be {} cm tall.".format(self.killer.height))
+        self.kitchen.event = False
+        self.main_entrance.event_func = self.entrance_scene
+        self.main_entrance.event = True
+        
+    def entrance_scene(self):
+        print("Everyone has gathered in the mansion entrance.  It's time for you to identify the killer!")
+        win_options = [Option("{0} at {1}".format(person.name, person.height), lose_screen) for person in self.persons]
+        win_options[self.killer_index].function = win_screen
+        random.shuffle(win_options)
+        win_menu = Menu(win_options, "Who is the killer?")
+        win_menu.display()
+        
+def win_screen():
+    sys.exit("You've won! :D")
+    
+def lose_screen():
+    sys.exit("You've lost! :O")
+    
+        
     

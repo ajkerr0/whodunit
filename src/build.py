@@ -7,11 +7,12 @@ from menu import Option, Menu
 class Room(object):
     des = "You are unsure what this room is."
     def __init__(self,roomList=[],name="unknown",description=des):
-        self.items = []
         self.adjacentRooms = roomList
         self.name = name
         self.description = description
         self.menu = Menu([], "dummy menu")
+        self.items = []
+        self.event = False
         
     def listAdjacentRooms(self):
         print("The nearby rooms are: ")
@@ -32,6 +33,9 @@ class Room(object):
         print(self.description)
         
     def display(self):
+        if self.event is True:
+            #start event
+            self.event_func()
         self.menu.display()
     
     def inspectShit(self):
