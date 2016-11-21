@@ -35,8 +35,14 @@ class Story:
         self.rooms = rooms
         self.kitchen = self.rooms[6]
         self.main_entrance = self.rooms[1]
+        self.library = self.rooms[23]
+        #set kitchen scene
         self.kitchen.event_func = self.kitchen_scene
         self.kitchen.event = True
+        #set library easter egg
+        self.library.event_func = self.library_ee
+        self.library.event = True
+        
         
     def name(self, index):
         return self.persons[index].name
@@ -68,6 +74,9 @@ class Story:
         After finishing the rest of your drink, you decide that you will use the knowledge you have obtained so far in \
         your physics career to solve this murder so that no one else comes to harm.\n"\
         .format(random.randint(1,10), self.glmv.name, self.host.name, self.host.name))
+        
+    def library_ee(self):
+        print("In the library you notice a desk, a lamp, and a dead body.")
         
     def kitchen_scene(self):
         print("As you walk into the kitchen you notice a bullet hole on the western wall!  \
