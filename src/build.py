@@ -69,6 +69,23 @@ class Item:
     def __init__(self, name, desc):
         self.name = name
         self.desc = desc
+def askBurg():
+    print(" ")
+    print(" ")
+    print("    ---   ")
+    print("  /     \   ")
+    print("  |-o-o-|  ")
+    print("  \  -  /  ")
+    print("   \-^-/   ")
+    print("           ")
+    print("I am Uncertain.")
+
+def itemInteract():
+    item = raw_input("What item do you want to look at?")
+    print("This is a " + item)#Do stuff
+    #Here alex will give item description or activate the horcrux
+
+
 
 def buildRooms():
 
@@ -157,6 +174,8 @@ def buildRooms():
         
         action_options = [Option("Look at Map",printLayout)]
         action_options.append(Option("Back to previous menu",room.leave_menu.display))
+        action_options.append(Option("Consult your pal Heisenburg",askBurg))
+        action_options.append(Option("Look at an item more closely",itemInteract))
         
         room.action_menu = Menu(action_options, "What action will you perform?")
 
