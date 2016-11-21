@@ -4,6 +4,8 @@
 @author: Alex Kerr
 """
 
+bar = "X"*50
+
 class Option:
     """An option in a menu.
     
@@ -19,7 +21,11 @@ class Option:
         self.function(*args)
 
 class Menu:
-    """A collection of options that can be displayed, one of which can be chosen."""
+    """A collection of options that can be displayed, one of which can be chosen.
+    
+    Arguments:
+        options (list): List of option objects that are the choices in the menu.
+        message (str): String that is displayed above the options."""
     
     def __init__(self, options, message):
         self.options = options
@@ -28,13 +34,17 @@ class Menu:
     def display(self):
         ans = True
         while ans:
+            print(bar)
             print(self.message)
             for counter, option in enumerate(self.options):
                 print(str(counter+1) + ": " + option.name)
+            print(bar)
             try:
-                try: input = raw_input
-                except NameError: pass
-                ans = int(input("What will you do?"))
+#                try: 
+#                    input = raw_input
+#                except NameError: 
+#                    pass
+                ans = int(input("What will you do?  "))
             except ValueError:
                 print("Please input an integer")
                 continue
@@ -43,7 +53,7 @@ class Menu:
                     option.function()
                 else:
                     pass
-            print("Try again")
+#            print("Try again")
             self.display()
         
 class Item:
