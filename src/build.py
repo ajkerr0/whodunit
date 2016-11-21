@@ -6,8 +6,8 @@ from menu import Option, Menu
 
 class Room(object):
     des = "You are unsure what this room is."
-    def __init__(self,itemList=[],roomList=[],name="unknown",description=des):
-        self.items = itemList
+    def __init__(self,roomList=[],name="unknown",description=des):
+        self.items = []
         self.adjacentRooms = roomList
         self.name = name
         self.description = description
@@ -58,105 +58,92 @@ class Person(object):
         self.watch = watch
         self.glasses = glasses
         self.testimony = testimony
+        
+class Item:
+    """An item in the game.
+    
+    Arguments:
+        name (str): Name of the item.
+        desc (str): Descripton of the item available to the player."""
+        
+    def __init__(self, name, desc):
+        self.name = name
+        self.desc = desc
 
 def buildRooms():
 
-    MainEntrance = Room(["Bat","Picture"],
-        [2,6,10,12],
-        "Main Entrance",
-        "This is the main entrance of the building. In front of you is a grand staircase. There is a door to your left, one to the right, and also a door under the stairs.")
-    GrandeLounge = Room([],
-         [1,3],
-         "Grande Lounge",
-         "This is a large social area complete with a wet bar.")
-    DiningRoom = Room([],
-         [2,6],
-         "Dining Room",
-         "This is a large dining room complete with a long dinner table set with food.")
-    Storage = Room([],
-         [5],
-         "Storage",
-         "Storage pantry with plenty of food.")
-    ServantsQuarters = Room([],
-         [4,6],
-         "Servant's Quarters",
-         "A small cot and a few magazines are surrounded by dirty clothes" )
-    Kitchen = Room([],
-         [3,5,7,1],
-         "Kitchen",
-         " Large kitchen complete with an island and all appliances.")
-    Freezer = Room([],
-         [6],
-         "Freezer",
-         "Walk in freezer. Relatively empty")
-    BallRoom = Room([],
-         [6,9],
-         "Ball Room",
-         "Large ball room that has been decorated for some event. There is a stage in the corner, and an open ceiling that looks up to a balcony.")
-    Restroom = Room([],
-         [8,10],
-         "Restroom",
-         "Large fancy restroom with marble floors and a couch. Contains two entrances.")
-    SideRoom = Room([],
-         [1,9,11],
-         "Side Room",
-         "Large room that has recently been used for storage. There appears to be another small closet in the corner.")
-    Nook = Room([],
-         [10],
-         "Nook",
-         "A small closet which contains a large table with physics experiments on top")
-    LargeHallway = Room([],
-         [13,14,15,16,17,18],
-         "Large Hallway",
-         "A large hallway at the top of the stairs")
-    BallRoomOverLook = Room([],
-         [12,23],
-         "Ball Room OverLook",
-         "An open balcony the looks down on the ballroom")
-    GuestBath1 = Room([],
-         [12],
-         "Guest Bath 1",
-         "Small bathroom with a sink and tub")
-    GuestBath2 = Room([],
-         [12],
-         "Guest Bath 2",
-         "Small bathroom with a sink and tub")
-    GuestRoom1 = Room([],
-         [18],
-         "Guest Room 1",
-         "Guest bedroom one of 4 identical")
-    GuestRoom2 = Room([],
-         [18],
-         "Guest Room 2",
-         "Guest bedroom one of 4 identical")
-    GuestRoom3 = Room([],
-         [18],
-         "Guest Room 3",
-         "Guest bedroom one of 4 identical")
-    GuestRoom4 = Room([],
-         [18],
-         "Guest Room 4",
-         "Guest bedroom one of 4 identical")
-    MasterBath = Room([],
-         [17],
-         "Master Bath",
-         "Master Bathroom. Two sinks and a shower with water that falls from the ceiling")
-    MasterBedRoom = Room([],
-         [12,16,24],
-         "Master BedRoom",
-         "Master bedroom. King size bed. There appears to be a double door that opens to a balcony")
-    Hallway = Room([],
-         [12,19,20,21,22],
-         "Hallway",
-         "Narrow hallway")
-    Library = Room([],
-         [13],
-         "Library",
-         "A very interesting library. There are four rows of books, mostly math and science.")
-    MasterBalcony = Room(["Dagger" ],
-         [17],
-         "Master Balcony",
-         "A small balcony that overlooks a fountain in the garden")
+    MainEntrance = Room([2,6,10,12],
+                        "Main Entrance",
+                        "This is the main entrance of the building. In front of you is a grand staircase. There is a door to your left, one to the right, and also a door under the stairs.")
+    GrandeLounge = Room([1,3],
+                        "Grande Lounge",
+                        "This is a large social area complete with a wet bar.")
+    DiningRoom = Room([2,6],
+                      "Dining Room",
+                      "This is a large dining room complete with a long dinner table set with food.")
+    Storage = Room([5],
+                   "Storage",
+                   "Storage pantry with plenty of food.")
+    ServantsQuarters = Room([4,6],
+                             "Servant's Quarters",
+                             "A small cot and a few magazines are surrounded by dirty clothes" )
+    Kitchen = Room([3,5,7,1],
+                   "Kitchen",
+                   "Large kitchen complete with an island and all appliances.")
+    Freezer = Room([6],
+                   "Freezer",
+                   "Walk in freezer. Relatively empty")
+    BallRoom = Room([6,9],
+                    "Ball Room",
+                    "Large ball room that has been decorated for some event. There is a stage in the corner, and an open ceiling that looks up to a balcony.")
+    Restroom = Room([8,10],
+                    "Restroom",
+                    "Large fancy restroom with marble floors and a couch. Contains two entrances.")
+    SideRoom = Room([1,9,11],
+                    "Side Room",
+                    "Large room that has recently been used for storage. There appears to be another small closet in the corner.")
+    Nook = Room([10],
+                "Nook",
+                "A small closet which contains a large table with physics experiments on top")
+    LargeHallway = Room([13,14,15,16,17,18],
+                        "Large Hallway",
+                        "A large hallway at the top of the stairs")
+    BallRoomOverLook = Room([12,23],
+                            "Ball Room OverLook",
+                            "An open balcony the looks down on the ballroom")
+    GuestBath1 = Room([12],
+                      "Guest Bath 1",
+                      "Small bathroom with a sink and tub")
+    GuestBath2 = Room([12],
+                      "Guest Bath 2",
+                      "Small bathroom with a sink and tub")
+    GuestRoom1 = Room([18],
+                      "Guest Room 1",
+                      "Guest bedroom one of 4 identical")
+    GuestRoom2 = Room([18],
+                      "Guest Room 2",
+                      "Guest bedroom one of 4 identical")
+    GuestRoom3 = Room([18],
+                      "Guest Room 3",
+                      "Guest bedroom one of 4 identical")
+    GuestRoom4 = Room([18],
+                      "Guest Room 4",
+                      "Guest bedroom one of 4 identical")
+    MasterBath = Room([17],
+                      "Master Bath",
+                      "Master Bathroom. Two sinks and a shower with water that falls from the ceiling")
+    MasterBedRoom = Room([12,16,24],
+                         "Master BedRoom",
+                         "Master bedroom. King size bed. There appears to be a double door that opens to a balcony")
+    Hallway = Room([12,19,20,21,22],
+                   "Hallway",
+                   "Narrow hallway")
+    Library = Room([13],
+                   "Library",
+                   "A very interesting library. There are four rows of books, mostly math and science.")
+    MasterBalcony = Room([17],
+                         "Master Balcony",
+                         "A small balcony that overlooks a fountain in the garden")
     Building = Room(description=" A large mansion that holds many secrets")
 
     roomList = [Building,MainEntrance,GrandeLounge,DiningRoom,Storage,ServantsQuarters,Kitchen,Freezer,BallRoom,
@@ -220,6 +207,14 @@ def buildPeople():
     peopleList = [AlbertEinstein,MarieCurie,NielsBohr,IsaacNewton,StephenHawking]
     
     return peopleList
+    
+def buildItems():
+    horcrux = Item('horcrux',
+                   'A widget that might be interesting.')
+                   
+    itemList = [horcrux]
+    
+    return itemList
 
 
 
