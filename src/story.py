@@ -48,9 +48,9 @@ class Story:
         return self.persons[index].name
         
     def prologue(self):
-        print("You, a lowly graduate student, have been invited to the annual Physics Social at Minkowski Manor. \
+        print("You, a lowly graduate student, have been invited to the annual Physics Social at Minkowski Manor.\
         The social is regularly frequented by some of the largest names in physics and astronomy.  \
-        Minkowski Manor is a large two story mansion with a basement.  A heavy storm is brewing and in fact a downpour has already begun.  \
+        Minkowski Manor is a large and luxurious two story mansion. A heavy storm is brewing and in fact a downpour has already begun.  \
         However, the Physics Social is one of the largest events of the year and the host {0} regularly brags about the safety of the residence.\n \
         Upon entering you shed your rain soaked coat and are quickly greeted by {1} and Werner Heisenberg.  \
         They offer you a drink and you move into the Grand Lounge with your two comrades. \
@@ -58,22 +58,30 @@ class Story:
         .format(self.host.name, self.friend1.name))
         
     def start(self):
-        print("You have drunk {0} drinks and are swaying to the soft music playing in the background.  \
-        The guests have all taken it upon themselves to move freely about the manor nosing their way through the host’s possessions.\
-        You lean in to tell Heisenberg a dirty joke when lightning strikes just outside the Dining Room window shaking the whole house with the deafening thunder.\
+        print("You've had {0} drinks and are swaying to the soft music of a record player playing in the background.  \
+        {1} has called everyone into the Grand Lounge for a toast before dinner. \
+        Standing in the doorway leading to the Foyer {2} gives a toast to the recent observations of the LIGO detector and \
+        to the continued successes of his fellow physicists. \
+        {1} also explains that the band has cancelled because of the storm, so the after dinner dancing will have to be to the music of the record player. \
+        As your host continues on with a well-rehearsed speech, you lean in to tell Heisenberg a \
+        dirty joke when lightning strikes just outside the Dining Room window shaking the whole house with deafening thunder. \
         The power goes out and several screams are heard throughout the house along with various other noises you can't identify.\n \
-        You assume that some people must have fallen when the power went out. \
-        The power comes back on and everyone in the Grand Lounge is shocked to see {1} lying on the floor motionless with a small arrow in their back. \
-        You are stunned and the {2} quickly yells to the butler to call for an ambulance and the police for a murder has occurred.  \
-        {3} starts to tell everyone to remain calm as panic slowly starts to creep in among the party guests. \n \
+        The power comes back on and everyone in the Grand Lounge is shocked to see {3} lying on the floor motionless with a small arrow in their back. \
+        You are stunned and {1} quickly yells to the Butler the bulter to call for an ambulance and the police for a murder has occurred.  \
+        {1} tells everyone to remain calm as panic slowly starts to creep in among the party guests. \n \
         Just as everyone starts to calm down, to the extent they are capable of anyways after all a murder had just happened right in front of them, \
-        the butler returns to relay the news that the phones are down.  \
+        the Butler the butler returns to relay the news that the phones are down.  \
         The valet then drives the final nail in the coffin by telling everyone in the Grand Lounge that the road to the manor has been blocked by trees \
-        and that the small bridge has collapsed due to the raging waters caused by the downpour. \n \
+        and that the small bridge has collapsed due to the raging waters caused by the downpour. \
+        Panic ensues and people are starting to look at each other with suspecting eyes. \
+        After a few moments of this {1} finally gets everyone to calm down and \
+        says that the only option they have is to split into groups and search the house for the murderer. \n \
         Slowly the eerie truth that they are stuck in the mansion at least until morning starts to sink into the minds of the party goers including yourself. \
         After finishing the rest of your drink, you decide that you will use the knowledge you have obtained so far in \
-        your physics career to solve this murder so that no one else comes to harm.\n"\
-        .format(random.randint(1,10), self.glmv.name, self.host.name, self.host.name))
+        your physics career to solve this murder so that no one else comes to harm.\
+        People break into groups and start to search the house but it is obvious most are in shock and \
+        will end up sitting in another room trying to collect themselves."\
+        .format(random.randint(1,10), self.host.name, self.host.pronoun, self.glmv.name))
         
     def library_ee(self):
         print("In the library you notice a desk, a lamp, and a dead body.")
