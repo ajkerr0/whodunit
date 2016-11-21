@@ -56,16 +56,3 @@ class Menu:
 #            print("Try again")
             self.display()
         
-class Item:
-    """An item in the game.
-    
-    Arguments:
-        name (str): Name of the item.
-        desc (str): Descripton of the item available to the player."""
-        
-    def __init__(self, name, desc):
-        self.name = name
-        self.desc = desc
-
-
-        

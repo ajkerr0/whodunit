@@ -19,7 +19,7 @@ class Story:
             
         We have to change this if we want the possibility of characters 'double dipping' their roles, i.e the host can also be the killer sometimes, etc."""
     
-    def __init__(self, persons):
+    def __init__(self, rooms, persons, items):
         random.shuffle(persons)
         self.persons = persons
         

@@ -16,8 +16,9 @@ import build
 TITLE = "WHODUNIT"
 ROOMS = build.buildRooms()
 PERSONS = build.buildPeople()
+ITEMS = build.buildItems()
 
-story = Story(PERSONS)
+story = Story(ROOMS, PERSONS, ITEMS)
 
 def main():
     """Main program execution."""
