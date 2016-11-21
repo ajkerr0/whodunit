@@ -28,6 +28,9 @@ class Room(object):
     def addItem(self,item):
         self.item.append(str(item))
         
+    def inspect(self):
+        print(self.description)
+        
     def display(self):
         self.menu.display()
         
@@ -36,6 +39,7 @@ class Person(object):
     def __init__(self,
             height=172.2,
             weight=712,
+            pronoun="It",
             name="Name",
             watch=False,
             glasses=False,
@@ -43,6 +47,7 @@ class Person(object):
         
         self.height = height
         self.weight = weight
+        self.pronoun = pronoun
         self.name = name
         self.watch = watch
         self.glasses = glasses
@@ -158,7 +163,7 @@ def buildRooms():
         leave_options.append(Option("Stay in {}".format(room.name), room.display))
         room.leave_menu = Menu(leave_options, "Where would you like to enter?")
         
-        room.menu = Menu([Option("Inpect {}".format(room.name), None),
+        room.menu = Menu([Option("Inpect {}".format(room.name), room.inspect),
                           Option("Leave {}".format(room.name), room.leave_menu.display)],
                           "You are in the {}.  What will you do?".format(room.name))
 
@@ -167,30 +172,35 @@ def buildRooms():
 def buildPeople():
     AlbertEinstein = Person(height=172.2,
             weight=712,
+            pronoun='He',
             name="Albert Einstein",
             watch=True,
             glasses=False,
             testimony="Drinking heavily. Off putting and angry about being stuck with here.  In slurring words tells you to leave them alone")
     MarieCurie = Person(160,
             600,
+            'She',
             "Marie Curie",
             False,
             False,
             testimony="Saw the silhouette of a person in the doorway of the dining room but lightning blinded him then the person was gone")
     NielsBohr = Person(182,
             900,
+            'He'
             "Niels Bohr",
             True,
             False,
             testimony="Standing near the right side of the entrance to the dining room. Heard a snap from his right hand side near the book shelf")
     IsaacNewton = Person(158,
             650,
+            'He'
             "Isaac Newton",
             False,
             False,
             testimony="Breathing heavily. Seems nervous or frightened. Heard a scream in the entrance area.")
     StephenHawking = Person(110,
             300,
+            'He',
             "Stephen Hawking",
             True,
             True,
