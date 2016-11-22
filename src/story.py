@@ -92,7 +92,11 @@ class Story:
         self.kitchen.event = False
         self.main_entrance.event_func = self.entrance_scene
         self.main_entrance.event = True
-        
+	def main_entrance_scene(self):
+		print("As you walk into the main entrance, you notice a lamp, a desk, and a dead body.")
+
+
+
     def entrance_scene(self):
         print("Everyone has gathered in the mansion entrance.  It's time for you to identify the killer!")
         win_options = [Option("{0} at {1}".format(person.name, person.height), lose_screen) for person in self.persons]
