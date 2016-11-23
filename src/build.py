@@ -177,7 +177,7 @@ def buildRooms():
         room.leave_menu = Menu(leave_options, "Where would you like to enter?")
         
         action_options = [Option("Look at Map",printLayout)]
-        action_options.append(Option("Back to previous menu",room.leave_menu.display))
+        action_options.append(Option("Back to previous menu",room.display))
         action_options.append(Option("Consult your pal Heisenburg",askBurg))
         action_options.append(Option("Look at an item more closely",itemInteract))
         
