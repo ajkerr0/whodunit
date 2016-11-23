@@ -73,6 +73,27 @@ class Item:
     def __init__(self, name, desc):
         self.name = name
         self.desc = desc
+        
+class Journal(Item):
+    """An item with text entries that the player can add."""
+    
+    def __init__(self):
+        Item.__init__(self,'journal', 'Your personal journal.  It ought to be helpful during this investigation.')
+        self.entries = []
+        
+    def add_entry(self, entry):
+        self.entries.append(entry)
+        
+    def player_entry(self):
+        entry = str(input("Add an entry to your journal:  "))
+        self.add_entry(entry)
+        
+    def read(self):
+        for entry in self.entries:
+            print("-- {}".format(entry))
+            
+journal = Journal()
+    
 def askBurg():
     print(" ")
     print(" ")
@@ -177,16 +198,18 @@ def buildRooms():
         room.leave_menu = Menu(leave_options, "Where would you like to enter?")
         
         action_options = [Option("Look at Map",printLayout)]
-        action_options.append(Option("Back to previous menu",room.display))
+        action_options.append(Option("Read journal", journal.read))
+        action_options.append(Option("Add journal entry", journal.player_entry))
         action_options.append(Option("Consult your pal Heisenburg",askBurg))
         action_options.append(Option("Look at an item more closely",itemInteract))
+        action_options.append(Option("Back",room.display))
         
         room.action_menu = Menu(action_options, "What action will you perform?")
 
         room.menu = Menu([Option("Inpect {}".format(room.name), room.inspectShit),
-						  Option("Perform an action",room.action_menu.display),
+				   Option("Perform an action",room.action_menu.display),
                           Option("Leave {}".format(room.name), room.leave_menu.display)],
-                          "You are in the {}.  What will you do?".format(room.name))
+                          "You are in the {}.".format(room.name))
 
     return roomList
 
@@ -232,10 +255,8 @@ def buildPeople():
     return peopleList
     
 def buildItems():
-    horcrux = Item('horcrux',
-                   'A widget that might be interesting.')
                    
-    itemList = [horcrux]
+    itemList = [journal]
     
     return itemList
 

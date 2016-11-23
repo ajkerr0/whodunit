@@ -31,6 +31,8 @@ class Story:
         self.glmv = self.persons[2]  # grand lounge murder victim
         self.killer_index = 3
         self.killer = self.persons[self.killer_index]
+        #assign items
+        self.journal = items[0]
         #assign rooms
         self.rooms = rooms
         self.kitchen = self.rooms[6]
@@ -83,19 +85,19 @@ class Story:
         will end up sitting in another room trying to collect themselves."\
         .format(random.randint(1,10), self.host.name, self.host.pronoun, self.glmv.name))
         
+        self.journal.add_entry("Something bad has just happened.  You are off to find out what it was in this mansion.")
+        
     def library_ee(self):
         print("In the library you notice a desk, a lamp, and a dead body.")
         
     def kitchen_scene(self):
-        print("As you walk into the kitchen you notice a bullet hole on the western wall!  \
-        You deduce that the perpetrator must be {} cm tall.".format(self.killer.height))
+        msg = "As you walk into the kitchen you notice a bullet hole on the western wall!  \
+        You deduce that the perpetrator must be {} cm tall.".format(self.killer.height)
+        print(msg)
         self.kitchen.event = False
         self.main_entrance.event_func = self.entrance_scene
         self.main_entrance.event = True
-	def main_entrance_scene(self):
-		print("As you walk into the main entrance, you notice a lamp, a desk, and a dead body.")
-
-
+        self.journal.add_entry(msg)
 
     def entrance_scene(self):
         print("Everyone has gathered in the mansion entrance.  It's time for you to identify the killer!")
