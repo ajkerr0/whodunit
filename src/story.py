@@ -56,7 +56,7 @@ class Story:
         However, the Physics Social is one of the largest events of the year and the host {0} regularly brags about the safety of the residence.\n \
         Upon entering you shed your rain soaked coat and are quickly greeted by {1} and Werner Heisenberg.  \
         They offer you a drink and you move into the Grand Lounge with your two comrades. \
-        The ***REMOVED***hts festivities begin but you have a feeling to***REMOVED***ht's Physics Social will be very different from any other..."\
+        The nights festivities begin but you have a feeling tonight's Physics Social will be very different from any other..."\
         .format(self.host.name, self.friend1.name))
         
     def start(self):

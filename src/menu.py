@@ -4,7 +4,7 @@
 @author: Alex Kerr
 """
 
-bar = "X"*50
+bar = "\n" + "#"*50 + "\n"
 
 class Option:
     """An option in a menu.
